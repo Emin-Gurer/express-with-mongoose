@@ -40,7 +40,8 @@ app.get('/products/id=:id', async (req, res) => {
 
 //Create
 app.get('/products/create', (req, res) => {
-  res.render('products/create.ejs');
+  const categories = Product.schema.path('category').enumValues;
+  res.render('products/create.ejs', { categories });
 });
 app.post('/products/create', async (req, res) => {
   const newProduct = new Product(req.body);
@@ -51,8 +52,9 @@ app.post('/products/create', async (req, res) => {
 //Update
 app.get('/products/id=:id/update', async (req, res) => {
   const { id } = req.params;
+  const categories = Product.schema.path('category').enumValues;
   const product = await Product.findById(id);
-  res.render(`products/update.ejs`, { product });
+  res.render(`products/update.ejs`, { product, categories });
 });
 app.put('/products/id=:id/update', async (req, res) => {
   const { id } = req.params;
@@ -68,11 +70,18 @@ app.put('/products/id=:id/update', async (req, res) => {
   res.redirect(`/products/id=${product.id}`);
 });
 
+//Delete
+app.delete('/products/id=:id/delete', async (req, res) => {
+  const { id } = req.params;
+  const response = await Product.findByIdAndDelete(id);
+  res.redirect('/');
+});
+
 //Route fallback
 app.get('*', (req, res) => {
   res.send('This page doesnt exist');
 });
 //Start server
 app.listen(port, (req, res) => {
-  console.log('Express server is listening on port 8080');
+  console.log(`Express server is listening on http://localhost:${port}`);
 });

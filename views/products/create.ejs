@@ -26,9 +26,9 @@
         <label for="category">Category:</label>
         <br />
         <select name="category" id="category">
-          <option value="fruit">Fruit</option>
-          <option value="vegetable">Vegetable</option>
-          <option value="dairy">Dairy</option>
+          <% for(category of categories){ %>
+          <option value="<%= category %>"><%= category %></option>
+          <% } %>
         </select>
         <button>Save</button>
       </form>
