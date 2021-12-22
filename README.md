@@ -16,9 +16,14 @@ Use `node server.js` to start
   - [x] MongoDB
 - Pattern
   - [x] Model View Controller(MVC)
-- Routing [x] RESTful
+- Routing
+  - [x] RESTful
 - Libraries
-  - Web app framework [x] Express
-  - View Engine [x] ejs
-  - HTTP method wrapper [x] method-override
-  - Object-Document Mapper(ODM) [x] mongoose
+  - Web app framework
+    - [x] Express
+  - View Engine
+    - [x] ejs
+  - HTTP method wrapper
+    - [x] method-override
+  - Object-Document Mapper(ODM)
+    - [x] mongoose
