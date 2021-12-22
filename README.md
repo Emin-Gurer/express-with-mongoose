@@ -10,12 +10,12 @@ Use `node server.js` to start
 
 # Libraries and techs used in project
 
-- Server **Node.js**
-- Database **MongoDB**
-- Pattern **Model View Controller(MVC)**
-- Routing **RESTful**
+- Server - [x] Node.js
+- Database - [x] MongoDB
+- Pattern - [x] Model View Controller(MVC)
+- Routing - [x] RESTful
 - Libraries
-  - Web app framework **Express**
-  - View Engine **ejs**
-  - HTTP method wrapper **method-override**
-  - Object-Document Mapper(ODM) **mongoose**
+  - Web app framework - [x] Express
+  - View Engine - [x] ejs- [x]
+  - HTTP method wrapper - [x] method-override
+  - Object-Document Mapper(ODM) - [x] mongoose
