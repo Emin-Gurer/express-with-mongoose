@@ -19,11 +19,10 @@ Use `node server.js` to start
 - Routing
   - [x] RESTful
 - Libraries
-  - Web app framework
-    - [x] Express
-  - View Engine
-    - [x] ejs
-  - HTTP method wrapper
-    - [x] method-override
-  - Object-Document Mapper(ODM)
-    - [x] mongoose
+
+  - [x] Express (Web app framework)
+  - [x] ejs (View Engine)
+  - [x] method-override (HTTP method wrapper)
+  - [x] mongoose (Object-Document Mapper(ODM))
+
+  ![express-mongoose](https://user-images.githubusercontent.com/78971120/147103545-8c141d75-c0dc-4b4d-bfce-c9b96b9214ea.gif)
