@@ -18,6 +18,8 @@ Use `node server.js` to start
   - [x] Model View Controller(MVC)
 - Routing
   - [x] RESTful
+- Styling
+  - [x] Bootstrap
 - Libraries
 
   - [x] Express (Web app framework)
