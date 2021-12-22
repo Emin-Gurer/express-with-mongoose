@@ -32,22 +32,22 @@ const seedProducts = [
   {
     name: 'Egg Plant',
     price: 15.6,
-    category: 'vegetable',
+    category: 'Vegetable',
   },
   {
     name: 'Organic Goddess Melon',
     price: 15.6,
-    category: 'fruit',
+    category: 'Fruit',
   },
   {
     name: 'Organic Celery',
     price: 15.6,
-    category: 'vegetable',
+    category: 'Vegetable',
   },
   {
     name: 'Chocolate Whole Milk',
     price: 15.6,
-    category: 'dairy',
+    category: 'Dairy',
   },
 ];
 
