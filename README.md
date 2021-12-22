@@ -2,8 +2,8 @@
 
 ## This app is created using _node.js, express, mongo, bootstrap_
 
-### You should have _mongo database_ running to use this app
+You should have _mongo database_ running to use this app
 
-### First use `node seeds.js` command to feed database with seed data
+First use `node seeds.js` command to feed database with seed data
 
-### Use `node server.js` to start
+Use `node server.js` to start
