@@ -15,7 +15,7 @@ Use `node server.js` to start
 - Pattern **Model View Controller(MVC)**
 - Routing **RESTful**
 - Libraries
-  - Web app framework \*\*Express\*\*
-  - View Engine \*\*ejs\*\*
-  - HTTP method wrapper \*\*method-override\*\*
-  - Object-Document Mapper(ODM) \*\*mongoose\*\*
+  - Web app framework **Express**
+  - View Engine **ejs**
+  - HTTP method wrapper **method-override**
+  - Object-Document Mapper(ODM) **mongoose**
