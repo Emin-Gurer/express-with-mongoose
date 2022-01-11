@@ -1,6 +1,8 @@
 <%- layout('layout/boilerplate.ejs') %>
 <main class="container-sm pt-3">
   <h1 class="text-center"><%= product.name %></h1>
+  <div class="col-6 offset-3 mb-3">
+    <img class="img-fluid" src="<%= product.image %>" alt="product image">
   <form
     action="/products/id=<%= product._id %>/update?_method=PUT"
     method="POST"
@@ -24,13 +26,29 @@
       placeholder="Price"
       value="<%= product.price %>"
     />
+    <label class="form-label" for="image">Image URL:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="image"
+      id="image"
+      placeholder="Image URL"
+      value="<%= product.image %>"
+    />
     <label for="category" class="form-label">Category:</label>
     <select name="category" id="category" class="form-select">
       <% for(category of categories){ %>
         <option value="<%= category %>" <%= product.category === category ? 'selected' : '' %> ><%= category %></option>
       <% } %> 
     </select>
+    <label class="form-label" for="store">Store:</label>
+    <select name="store" id="store" class="form-select">
+      <% for(store of stores){ %>
+      <option value="<%= store.id %>" <%= product.store === store.id ? 'selected' : '' %>><%= store.name %></option>
+      <% } %>
+    </select>
     <button class="btn btn-success mt-2"><i class="bi bi-check-square me-1"></i>Save</button>
     <a href="/" class="btn btn-danger mt-2"><i class="bi bi-x-square me-1"></i>Cancel</a>
   </form>
+</div>
 </main>

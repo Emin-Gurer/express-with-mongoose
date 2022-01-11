@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-const productSchema = new mongoose.Schema({
+const { Schema } = mongoose;
+const productSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Product must have a name'],
@@ -18,6 +18,11 @@ const productSchema = new mongoose.Schema({
     type: String,
     enum: ['Fruit', 'Vegetable', 'Dairy'],
     required: [true, 'Product must have a category'],
+  },
+  store: {
+    type: Schema.Types.ObjectId,
+    ref: 'Store',
+    required: [true, 'Product must have a store.'],
   },
 });
 

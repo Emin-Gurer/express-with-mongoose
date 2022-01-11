@@ -1,11 +1,21 @@
 <%- layout('layout/boilerplate.ejs') %>
-<main class="col-6 offset-3">
+<main class="col-2 offset-5">
   <h1 class="text-center"><%= product.name %></h1>
-  <ul class="list-group">
+  <div
+    class="mt-2"
+    style="
+      background: url('<%= product.image %>');
+      background-size: cover;
+      background-position: center;
+      width: auto;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 0.25rem;
+    "
+  ></div>
+  <ul class="list-group mb-3">
     <li class="list-group-item">Price: $<%= product.price %></li>
     <li class="list-group-item">Category: <%= product.category %></li>
+    <li class="list-group-item">Store: <%= product.store.name %></li>
   </ul>
-  <a href="/" class="btn btn-primary mt-2"
-    ><i class="bi bi-house-door me-2"></i>Home page</a
-  >
 </main>

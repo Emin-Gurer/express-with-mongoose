@@ -32,6 +32,12 @@
       <option value="<%= category %>"><%= category %></option>
       <% } %>
     </select>
+    <label class="form-label" for="store">Store:</label>
+    <select name="store" id="store" class="form-select">
+      <% for(store of stores){ %>
+      <option value="<%= store.id %>"><%= store.name %></option>
+      <% } %>
+    </select>
     <button class="btn btn-success mt-2">
       <i class="bi bi-check-square me-1"></i>Save
     </button>
