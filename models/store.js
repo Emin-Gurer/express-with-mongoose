@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const Product = require('./product');
 
 const storeSchema = new Schema({
   email: {
@@ -14,12 +15,10 @@ const storeSchema = new Schema({
     type: String,
     required: [true, 'Store must have a location'],
   },
-  products: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Product',
-    },
-  ],
+});
+
+storeSchema.post('findOneAndDelete', async function (store) {
+  const result = await Product.deleteMany({ store: store.id });
 });
 
 const Store = mongoose.model('Store', storeSchema);

@@ -1,18 +1,7 @@
 <%- layout('layout/boilerplate.ejs') %>
-<main class="col-2 offset-5">
+<main class="col-4 offset-4">
   <h1 class="text-center"><%= product.name %></h1>
-  <div
-    class="mt-2"
-    style="
-      background: url('<%= product.image %>');
-      background-size: cover;
-      background-position: center;
-      width: auto;
-      aspect-ratio: 1;
-      overflow: hidden;
-      border-radius: 0.25rem;
-    "
-  ></div>
+  <img class="img-fluid" src="<%= product.image %>" alt="product image" />
   <ul class="list-group mb-3">
     <li class="list-group-item">Price: $<%= product.price %></li>
     <li class="list-group-item">Category: <%= product.category %></li>

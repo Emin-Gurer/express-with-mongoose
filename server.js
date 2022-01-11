@@ -32,7 +32,7 @@ app.engine('ejs', ejsMate);
 
 //Routes
 
-//Home
+//All products
 app.get(
   '/',
   wrapAsync(async (req, res) => {
@@ -40,6 +40,16 @@ app.get(
     res.render('products/products.ejs', { products });
   })
 );
+
+//All stores
+app.get(
+  '/stores',
+  wrapAsync(async (req, res) => {
+    const stores = await Store.find({});
+    res.render('stores/stores.ejs', { stores });
+  })
+);
+
 //Details
 //Products
 app.get(
@@ -60,11 +70,12 @@ app.get(
   wrapAsync(async (req, res, next) => {
     const { id } = req.params;
     const store = await Store.findById(id);
+    const products = await Product.find({ store: store.id });
     if (!store) {
       //You have to pass error to next if error is coming from async promise
       throw new AppError('Product is not found', 404);
     }
-    res.render('stores/details.ejs', { store });
+    res.render('stores/details.ejs', { store, products });
   })
 );
 
@@ -101,6 +112,7 @@ app.post(
 );
 
 //Update
+//Products
 app.get(
   '/products/id=:id/update',
   wrapAsync(async (req, res) => {
@@ -123,6 +135,27 @@ app.put(
     res.redirect(`/products/id=${product.id}`);
   })
 );
+//Stores
+app.get(
+  '/stores/id=:id/update',
+  wrapAsync(async (req, res) => {
+    const { id } = req.params;
+    const store = await Store.findById(id);
+    res.render(`stores/update.ejs`, { store });
+  })
+);
+app.put(
+  '/stores/id=:id/update',
+  wrapAsync(async (req, res) => {
+    const { id } = req.params;
+    let store = {};
+    store = await Store.findByIdAndUpdate(id, req.body, {
+      runValidators: true,
+      new: true,
+    });
+    res.redirect(`/stores/id=${store.id}`);
+  })
+);
 
 //Delete
 app.delete(
@@ -131,6 +164,14 @@ app.delete(
     const { id } = req.params;
     const response = await Product.findByIdAndDelete(id);
     res.redirect('/');
+  })
+);
+app.delete(
+  '/stores/id=:id/delete',
+  wrapAsync(async (req, res) => {
+    const { id } = req.params;
+    const response = await Store.findByIdAndDelete(id);
+    res.redirect('/stores');
   })
 );
 
