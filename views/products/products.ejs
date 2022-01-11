@@ -1,13 +1,24 @@
 <%- layout('layout/boilerplate.ejs') %>
-<main class="col-8 offset-2">
-  <ul class="list-group">
-    <% for(let product of products) { %>
-    <li class="list-group-item d-flex justify-content-between">
-      <%= product.name %>
-      <div class="">
-        <a class="btn btn-primary" href="/products/id=<%= product.id %>"
-          ><i class="bi bi-list-columns-reverse me-2"></i>Details</a
-        >
+<div class="row">
+  <% for(let product of products) { %>
+  <div class="col-sm-6 col-lg-4">
+    <div class="card align-items-center mx-auto my-2" style="width: 18rem">
+      <div
+        class="mt-2"
+        style="
+          background: url('<%= product.image %>');
+          background-size: cover;
+          background-position: center;
+          width: 17rem;
+          aspect-ratio: 1;
+          overflow: hidden;
+          border-radius: 0.25rem;
+        "
+      ></div>
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name %></h5>
+        <p class="card-text">Category: <%= product.category %></p>
+        <p class="card-text">Price: <%= product.price %> $</p>
         <a href="/products/id=<%= product.id %>/update" class="btn btn-warning"
           ><i class="bi bi-arrow-clockwise me-2"></i>Update</a
         >
@@ -21,10 +32,7 @@
           </button>
         </form>
       </div>
-    </li>
-    <% } %>
-  </ul>
-  <a href="/products/create" class="btn btn-success mt-3"
-    >Create a new product</a
-  >
-</main>
+    </div>
+  </div>
+  <% } %>
+</div>
