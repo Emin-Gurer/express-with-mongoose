@@ -8,7 +8,7 @@ const wrapAsync = require('./errorUtilities/asyncWrap');
 const DB_URL = 'mongodb://localhost:27017/farmStand';
 const mongoose = require('mongoose');
 const Product = require('./models/product');
-const { wrap } = require('module');
+const ejsMate = require('ejs-mate');
 mongoose
   .connect(DB_URL)
   .then(() => {
@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //View engine and static assets
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', ejsMate);
 
 //Routes
 
