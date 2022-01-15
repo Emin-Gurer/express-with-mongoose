@@ -1,64 +1,38 @@
 const mongoose = require('mongoose');
 const Product = require('./models/product');
-const DB_URL = 'mongodb://localhost:27017/farmStand';
+const Store = require('./models/store');
+const DB_URL = 'mongodb://localhost:27017/myStore';
+const stores = require('./stores.json');
+const products = require('./products.json');
 
-mongoose
-  .connect(DB_URL)
-  .then(() => {
-    console.log('Mongo DB connection is successful');
-  })
-  .catch((error) => {
-    console.log('Mongo DB connection is failed');
-    console.log(error);
+const insertSeeds = async function () {
+  await mongoose.connect(DB_URL);
+  const db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'mongoDB connection error'));
+  db.once('open', () => {
+    console.log('mongoDB connection is open');
   });
+  //Note that if one element fails to be validated nothing will be inserted
+  //Mongoose validate all elements in one pass than decide to put them to DB or not
+  await Store.insertMany(stores)
+    .then((res) => {
+      console.log('Stores seeds are inserted');
+    })
+    .catch((e) => {
+      console.log('Stores seeds cannot be inserted');
+      console.log(e);
+    });
 
-//This is how to create one product and save at a time
+  await Product.insertMany(products)
+    .then((res) => {
+      console.log('Products seeds are inserted');
+    })
+    .catch((e) => {
+      console.log('Products seeds cannot be inserted');
+      console.log(e);
+    });
+  await db.close();
+  console.log('seeds.js executed');
+};
 
-// const product1 = new Product({
-//   name: 'Ruby Grapefruit',
-//   price: 19.99,
-//   category: 'fruit',
-// });
-// product1
-//   .save()
-//   .then(() => {
-//     console.log(product1);
-//   })
-//   .catch((e) => {
-//     console.log(e);
-//   });
-
-const seedProducts = [
-  {
-    name: 'Egg Plant',
-    price: 15.6,
-    category: 'Vegetable',
-  },
-  {
-    name: 'Organic Goddess Melon',
-    price: 15.6,
-    category: 'Fruit',
-  },
-  {
-    name: 'Organic Celery',
-    price: 15.6,
-    category: 'Vegetable',
-  },
-  {
-    name: 'Chocolate Whole Milk',
-    price: 15.6,
-    category: 'Dairy',
-  },
-];
-
-//Note that if one element fails to be validated nothing will be inserted
-//Mongoose validate all elements in one pass than decide to put them to DB or not
-Product.insertMany(seedProducts)
-  .then((res) => {
-    console.log('Seeds are inserted');
-    console.log(res);
-  })
-  .catch((e) => {
-    console.log('Seeds cannot be inserted');
-    console.log(e);
-  });
+insertSeeds();
