@@ -1,1 +1,39 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css');
+.global-container {
+  margin: 10px;
+}
+
+.product__body {
+  padding: 10px;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 10px;
+}
+.product__text {
+  display: block;
+}
+
+.product__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 10px;
+}
+
+.product__item {
+  background-color: palegoldenrod;
+  border-radius: 0.25rem;
+}
+
+.product__image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}

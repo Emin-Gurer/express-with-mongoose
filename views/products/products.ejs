@@ -1,50 +1,36 @@
 <%- layout('layout/boilerplate.ejs') %>
-<div class="row">
+<div class="product__list">
   <% for(let product of products) { %>
-  <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-    <div class="card align-items-center mx-auto my-2">
+  <div class="product__item">
+    <div class="wrapper">
       <div
-        class="mt-2"
-        style="
-          background: url('<%= product.image %>');
-          background-size: cover;
-          background-position: center;
-          width: 90%;
-          aspect-ratio: 1;
-          overflow: hidden;
-          border-radius: 0.25rem;
-        "
+        class="product__image"
+        style="background-image: url('<%= product.image %>')"
       ></div>
-      <div class="card-body fs-6 lh-1">
+      <div class="product__body">
         <div class="text-black h5 text-center"><%= product.name %></div>
-        <div class="card-text mb-1 text-nowrap">
-          Category: <%= product.category %>
-        </div>
-        <div class="card-text mb-1 text-nowrap">
-          Price: <%= product.price %> $
-        </div>
-        <div class="card-text mb-1 text-nowrap">
-          Store: <%= product.store.name %>
-        </div>
-        <div class="button-group d-flex justify-content-evenly">
-          <a class="btn btn-primary" href="/products/id=<%= product.id %>"
-            ><span class="bi bi-list-columns-reverse"></span
-          ></a>
-          <a
-            href="/products/id=<%= product.id %>/update"
-            class="btn btn-warning mx-2"
-            ><span class="bi bi-pencil-square"></span
-          ></a>
-          <form
-            class="d-block"
-            action="/products/id=<%= product.id %>/delete?_method=DELETE"
-            method="POST"
-          >
-            <button class="btn btn-danger">
-              <span class="bi bi-trash"></span>
-            </button>
-          </form>
-        </div>
+        <span class="product__text">Category: <%= product.category %></span>
+        <span class="product__text">Price: <%= product.price %> $</span>
+        <span class="product__text">Store: <%= product.store.name %></span>
+      </div>
+      <div class="button-group d-flex justify-content-evenly">
+        <a class="btn btn-primary" href="/products/id=<%= product.id %>"
+          ><span class="bi bi-list-columns-reverse"></span
+        ></a>
+        <a
+          href="/products/id=<%= product.id %>/update"
+          class="btn btn-warning mx-2"
+          ><span class="bi bi-pencil-square"></span
+        ></a>
+        <form
+          class="d-block"
+          action="/products/id=<%= product.id %>/delete?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-danger">
+            <span class="bi bi-trash"></span>
+          </button>
+        </form>
       </div>
     </div>
   </div>
