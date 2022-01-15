@@ -35,5 +35,6 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
-  border-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
