@@ -1,6 +1,11 @@
 <%- layout('layout/boilerplate.ejs') %>
 <main class="col-6 offset-3">
-  <form action="/products/create" method="POST">
+  <form
+    action="/products/create"
+    method="POST"
+    class="needs-validation"
+    novalidate
+  >
     <label class="form-label" for="name">Name:</label>
     <input
       class="form-control"
@@ -8,6 +13,7 @@
       name="name"
       id="name"
       placeholder="Name"
+      required
     />
     <label class="form-label" for="price">Price:</label>
     <input
@@ -17,6 +23,7 @@
       id="price"
       placeholder="Price"
       step="0.1"
+      required
     />
     <label class="form-label" for="image">Image URL:</label>
     <input
@@ -25,15 +32,16 @@
       name="image"
       id="image"
       placeholder="Image URL"
+      required
     />
     <label class="form-label" for="category">Category:</label>
-    <select name="category" id="category" class="form-select">
+    <select name="category" id="category" class="form-select" required>
       <% for(category of categories){ %>
       <option value="<%= category %>"><%= category %></option>
       <% } %>
     </select>
     <label class="form-label" for="store">Store:</label>
-    <select name="store" id="store" class="form-select">
+    <select name="store" id="store" class="form-select" required>
       <% for(store of stores){ %>
       <option value="<%= store.id %>"><%= store.name %></option>
       <% } %>

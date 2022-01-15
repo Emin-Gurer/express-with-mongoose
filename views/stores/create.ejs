@@ -1,6 +1,11 @@
 <%- layout('layout/boilerplate.ejs') %>
 <main class="col-6 offset-3">
-  <form action="/stores/create" method="POST">
+  <form
+    action="/stores/create"
+    method="POST"
+    novalidate
+    class="needs-validation"
+  >
     <label class="form-label" for="email">Email:</label>
     <input
       class="form-control"
@@ -8,6 +13,7 @@
       name="email"
       id="email"
       placeholder="Email"
+      required
     />
     <label class="form-label" for="name">Name:</label>
     <input
@@ -16,6 +22,7 @@
       name="name"
       id="name"
       placeholder="Name"
+      required
     />
     <label class="form-label" for="location">Location:</label>
     <input
@@ -24,6 +31,7 @@
       name="location"
       id="location"
       placeholder="Location"
+      required
     />
     <button class="btn btn-success mt-2">
       <i class="bi bi-check-square me-1"></i>Save

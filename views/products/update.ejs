@@ -5,7 +5,7 @@
     <img class="img-fluid" src="<%= product.image %>" alt="product image">
   <form
     action="/products/id=<%= product._id %>/update?_method=PUT"
-    method="POST"
+    method="POST" novalidate class="needs-validation"
   >
     <label for="name" class="form-label">Name:</label>
     <input
@@ -14,7 +14,8 @@
       name="name"
       id="name"
       placeholder="Name"
-      value="<%= product.name %> "
+      value="<%= product.name %>"
+      required
     />
     <label for="price" class="form-label">Price:</label>
     <input
@@ -25,6 +26,7 @@
       id="price"
       placeholder="Price"
       value="<%= product.price %>"
+      required
     />
     <label class="form-label" for="image">Image URL:</label>
     <input
@@ -34,15 +36,16 @@
       id="image"
       placeholder="Image URL"
       value="<%= product.image %>"
+      required
     />
     <label for="category" class="form-label">Category:</label>
-    <select name="category" id="category" class="form-select">
+    <select name="category" id="category" class="form-select" required>
       <% for(category of categories){ %>
         <option value="<%= category %>" <%= product.category === category ? 'selected' : '' %> ><%= category %></option>
       <% } %> 
     </select>
     <label class="form-label" for="store">Store:</label>
-    <select name="store" id="store" class="form-select">
+    <select name="store" id="store" class="form-select" required>
       <% for(store of stores){ %>
       <option value="<%= store.id %>" <%= product.store === store.id ? 'selected' : '' %>><%= store.name %></option>
       <% } %>
