@@ -27,4 +27,4 @@ Use `node server.js` to start
   - [x] method-override (HTTP method wrapper)
   - [x] mongoose (Object-Document Mapper(ODM))
 
-  ![express-mongoose](https://user-images.githubusercontent.com/78971120/147103545-8c141d75-c0dc-4b4d-bfce-c9b96b9214ea.gif)
+  ![mongo-express](https://user-images.githubusercontent.com/78971120/149657539-ffd11652-9745-48e4-9e82-3a6693add5fe.gif)
