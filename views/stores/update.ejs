@@ -1,0 +1,49 @@
+<%- layout('layout/boilerplate.ejs') %>
+<main class="container-sm pt-3 text-white">
+  <h1 class="text-center"><%= store.name %></h1>
+  <div class="col-6 offset-3 mb-3">
+    <form
+      class="needs-validation"
+      action="/stores/id=<%= store._id %>/update?_method=PUT"
+      method="POST"
+      novalidate
+    >
+      <label class="form-label" for="email">Email:</label>
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="email"
+        value="<%= store.email %>"
+        required
+      />
+      <label for="name" class="form-label">Name:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Name"
+        value="<%= store.name %>"
+        required
+      />
+      <label class="form-label" for="location">Location:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="location"
+        id="location"
+        placeholder="location"
+        value="<%= store.location %>"
+        required
+      />
+      <button class="btn btn-success mt-2">
+        <i class="bi bi-check-square me-1"></i>Save
+      </button>
+      <a href="/" class="btn btn-danger mt-2"
+        ><i class="bi bi-x-square me-1"></i>Cancel</a
+      >
+    </form>
+  </div>
+</main>

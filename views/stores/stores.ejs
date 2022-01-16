@@ -1,0 +1,35 @@
+<%- layout('layout/boilerplate.ejs') %>
+<div class="row">
+  <% for(let store of stores) { %>
+  <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+    <div class="card align-items-center mx-auto my-2">
+      <div class="card-body fs-6 lh-1">
+        <div class="text-black h5 text-center text-nowrap">
+          <%= store.name %>
+        </div>
+        <div class="card-text mb-1 text-nowrap">Email: <%= store.email %></div>
+        <div class="card-text mb-1 text-nowrap">
+          Location: <%= store.location %>
+        </div>
+        <div class="button-group d-flex justify-content-evenly">
+          <a class="btn btn-primary" href="/stores/id=<%= store.id %>"
+            ><span class="bi bi-list-columns-reverse"></span
+          ></a>
+          <a href="/stores/id=<%= store.id %>/update" class="btn btn-warning"
+            ><span class="bi bi-pencil-square"></span
+          ></a>
+          <form
+            class="d-block"
+            action="/stores/id=<%= store.id %>/delete?_method=DELETE"
+            method="POST"
+          >
+            <button class="btn btn-danger">
+              <span class="bi bi-trash"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>
