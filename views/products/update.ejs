@@ -1,8 +1,8 @@
 <%- layout('layout/boilerplate.ejs') %>
-<main class="container-sm pt-3">
-  <h1 class="text-center"><%= product.name %></h1>
-  <div class="col-6 offset-3 mb-3">
-    <img class="img-fluid" src="<%= product.image %>" alt="product image">
+<main class="container-fluid pt-3">
+  <h1 class="text-center text-white"><%= product.name %></h1>
+  <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 mb-3">
+    <img class="image" src="<%= product.image %>" alt="product image">
   <form
     action="/products/id=<%= product._id %>/update?_method=PUT"
     method="POST" novalidate class="needs-validation"

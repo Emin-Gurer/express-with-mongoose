@@ -1,7 +1,7 @@
 <%- layout('layout/boilerplate.ejs') %>
-<main class="container-sm pt-3 text-white">
+<main class="container-fluid pt-3 text-white">
   <h1 class="text-center"><%= store.name %></h1>
-  <div class="col-6 offset-3 mb-3">
+  <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 mb-3">
     <form
       class="needs-validation"
       action="/stores/id=<%= store._id %>/update?_method=PUT"
