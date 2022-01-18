@@ -1,5 +1,6 @@
 # Product listing app with stores
 
+- Fully responsive
 - All products are listed in homepage
 - All stores can be listed by navigation link
 - Products and stores can be added by navigation links
