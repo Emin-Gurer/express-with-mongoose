@@ -3,10 +3,13 @@
   <% for(let product of products) { %>
   <div class="product__item">
     <div class="wrapper">
-      <div
-        class="product__image"
-        style="background-image: url('<%= product.image %>')"
-      ></div>
+      <div class="product__image__container">
+        <img
+          class="product__image"
+          src="<%= product.image %>"
+          alt="product image"
+        />
+      </div>
       <div class="product__body">
         <div class="text-black h5 text-center"><%= product.name %></div>
         <span class="product__text">Category: <%= product.category %></span>
