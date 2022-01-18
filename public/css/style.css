@@ -5,6 +5,7 @@
 
 .product__body {
   padding: 10px;
+  flex-grow: 1;
 }
 .wrapper {
   display: flex;
@@ -24,7 +25,7 @@
 }
 
 .product__item {
-  background-color: palegoldenrod;
+  background-color: white;
   border-radius: 0.25rem;
 }
 
