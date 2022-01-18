@@ -1,4 +1,13 @@
-# Grocery and dairy listing node app
+# Product listing app with stores
+
+- All products are listed in homepage
+- All stores can be listed by navigation link
+- Products and stores can be added by navigation links
+- Products and stores can be viewed in details by blue buttons on cards
+- Products and stores can be edited by yellow buttons on the cards
+- Products and stores can be deleted by red buttons on the cards
+- All related products will be deleted if you delete a store
+- Products belong to specific store will be listed in store details page
 
 ## This app is created using **node.js, express, mongo, bootstrap**
 
@@ -10,7 +19,7 @@ Use `node server.js` to start
 
 # Libraries and techs used in project
 
-- Server
+- Backend Language
   - [x] Node.js
 - Database
   - [x] MongoDB
