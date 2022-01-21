@@ -1,5 +1,8 @@
 <%- layout('layout/boilerplate.ejs') %>
 <main class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+  <% if(message.length != 0) {%>
+  <div class="alert alert-success text-center" role="alert"><%= message %></div>
+  <% } %>
   <h1 class="text-center text-white"><%= product.name %></h1>
   <img class="image" src="<%= product.image %>" alt="product image" />
   <ul class="list-group mb-3">

@@ -1,6 +1,11 @@
 <%- layout('layout/boilerplate.ejs') %>
 <main class="container-fluid">
   <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 mb-3">
+    <% if(message.length != 0) {%>
+    <div class="alert alert-success text-center" role="alert">
+      <%= message %>
+    </div>
+    <% } %>
     <h1 class="text-center text-white"><%= store.name %></h1>
     <ul class="list-group">
       <li class="list-group-item">Location: <%= store.location %></li>

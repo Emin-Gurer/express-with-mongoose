@@ -10,6 +10,9 @@ const mongoose = require('mongoose');
 const Product = require('./models/product');
 const Store = require('./models/store');
 const ejsMate = require('ejs-mate');
+const session = require('express-session');
+const flash = require('connect-flash');
+
 mongoose
   .connect(DB_URL)
   .then(() => {
@@ -29,7 +32,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', ejsMate);
-
+//Session
+app.use(
+  session({
+    secret: 'devsecret',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(flash());
 //Routes
 
 //All products
@@ -37,7 +48,9 @@ app.get(
   '/',
   wrapAsync(async (req, res) => {
     const products = await Product.find({}).populate('store');
-    res.render('products/products.ejs', { products });
+    res.render('products/products.ejs', {
+      products,
+    });
   })
 );
 
@@ -61,7 +74,10 @@ app.get(
       //You have to pass error to next if error is coming from async promise
       throw new AppError('Product is not found', 404);
     }
-    res.render('products/details.ejs', { product });
+    res.render('products/details.ejs', {
+      product,
+      message: req.flash('success'),
+    });
   })
 );
 //Stores
@@ -75,7 +91,11 @@ app.get(
       //You have to pass error to next if error is coming from async promise
       throw new AppError('Product is not found', 404);
     }
-    res.render('stores/details.ejs', { store, products });
+    res.render('stores/details.ejs', {
+      store,
+      products,
+      message: req.flash('success'),
+    });
   })
 );
 
@@ -87,7 +107,10 @@ app.get(
   wrapAsync(async (req, res, next) => {
     const categories = Product.schema.path('category').enumValues;
     const stores = await Store.find({});
-    res.render('products/create.ejs', { categories, stores });
+    res.render('products/create.ejs', {
+      categories,
+      stores,
+    });
   })
 );
 app.post(
@@ -95,6 +118,7 @@ app.post(
   wrapAsync(async (req, res, next) => {
     const newProduct = new Product(req.body);
     await newProduct.save();
+    req.flash('success', 'Product is created');
     res.redirect(`/products/id=${newProduct._id}`);
   })
 );
@@ -107,6 +131,7 @@ app.post(
   wrapAsync(async (req, res, next) => {
     const newStore = new Store(req.body);
     await newStore.save();
+    req.flash('success', 'Store is created');
     res.redirect(`/stores/id=${newStore._id}`);
   })
 );
