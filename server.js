@@ -41,6 +41,11 @@ app.use(
   })
 );
 app.use(flash());
+app.use((req, res, next) => {
+  res.locals.message = req.flash('success');
+  next();
+});
+
 //Routes
 
 //All products
@@ -76,7 +81,6 @@ app.get(
     }
     res.render('products/details.ejs', {
       product,
-      message: req.flash('success'),
     });
   })
 );
@@ -94,7 +98,6 @@ app.get(
     res.render('stores/details.ejs', {
       store,
       products,
-      message: req.flash('success'),
     });
   })
 );
